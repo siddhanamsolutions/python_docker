@@ -1,13 +1,11 @@
-FROM ubuntu:latest
+FROM node:22
 
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y python3 python3-pip python3-flask
-
 COPY . .
 
-EXPOSE 8000
+RUN npm install
 
-# RUN pip3 install -r requirements.txt
+EXPOSE 8001
 
-CMD ["python3", "app.py"]
+CMD [ "node", "index.js" ]
